@@ -32,24 +32,22 @@ const StatusBarShape = {
 class NavigationBar extends React.Component {
 
     static propTypes = {
+        statusBar: PropTypes.shape(StatusBarShape),
         style: ViewPropTypes.style,
         title: PropTypes.string,
         titleView: PropTypes.element,
-        hide: PropTypes.bool,
-        leftButton: PropTypes.element,
-        rightButton: PropTypes.element,
-        statusBar: PropTypes.shape(StatusBarShape),
         titleLayoutStyle: ViewPropTypes.style,
-        leftTextStyle: ViewPropTypes.style,
-        leftButton: PropTypes.element,
-        leftTextStyle: ViewPropTypes.style,
+
         showLeft: PropTypes.bool,
-        rightButton: PropTypes.element,
-        rightTextStyle: ViewPropTypes.style,
-        showRight: PropTypes.bool,
         leftText: PropTypes.string,
+        leftTextStyle: ViewPropTypes.style,
+        showleftImg: PropTypes.bool,
+        leftButton: PropTypes.element,
+
+        showRight: PropTypes.bool,
         rightText: PropTypes.string,
-        showleftImg: PropTypes.bool
+        rightTextStyle: ViewPropTypes.style,
+        rightButton: PropTypes.element,
     };
 
     static defaultProps = {
@@ -67,11 +65,6 @@ class NavigationBar extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {
-            title: '',
-            hide: false,
-
-        }
     }
 
     render() {
@@ -109,7 +102,7 @@ class NavigationBar extends React.Component {
                     if (onLeftClick) {
                         onLeftClick();
                     } else {
-                        navigation.goBack()
+                        if (navigation) navigation.goBack()
                     }
                 }}>
                     <View style={styles.leftContainer}>
