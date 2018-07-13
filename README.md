@@ -3,6 +3,8 @@
 
 博客地址：https://blog.csdn.net/u011272795/article/details/80722036
 
+用到一个屏幕适配工具类，使用方法和代码 [请点这里](https://blog.csdn.net/u011272795/article/details/73824558)
+
 #### 属性：
 | Prop | Type | Default | Description
 | ---------- | :-----------:         |:---------------:| -----------|
