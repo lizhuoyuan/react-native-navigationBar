@@ -15,8 +15,10 @@
 | leftTextStyle  | ViewPropTypes.style   | -               |替换标题文字的组件
 | showleftImg  | bool   | true             |是否显示标题的后退按钮，本组件使用的是react-native-vector-icons中的图标，可自行替换成其他Image
 | showLeft  | bool   | true             | 是否显示返回按钮
+| onLeftClick  | func   | this.props.navigation.goBack()            | 左侧按钮的点击事件(默认为ReactNavigation的goback)
 | showRight  | bool   | false             | 是否显示右侧按钮
 | rightText  | string   |    更多           | 右侧按钮的文字
 | rightTextStyle  | ViewPropTypes.style    | -             | 是否显示返回按钮
 | rightButton  | PropTypes.element   | -             | 自定义右侧按钮
+| rightButton  | PropTypes.element   | -             | 右侧按钮的点击事件
 | statusBar  | {  barStyle: PropTypes.oneOf(['light-content', 'default', 'dark-content']),  hidden: PropTypes.bool,  backgroundColor: PropTypes.string,}   | { barStyle: 'default', hidden: false,}             | 自定义状态栏
