@@ -22,3 +22,50 @@
 | rightButton  | PropTypes.element   | -             | 自定义右侧按钮
 | rightButton  | PropTypes.element   | -             | 右侧按钮的点击事件
 | statusBar  | {  barStyle: PropTypes.oneOf(['light-content', 'default', 'dark-content']),  hidden: PropTypes.bool,  backgroundColor: PropTypes.string,}   | { barStyle: 'default', hidden: false,}             | 自定义状态栏
+
+
+### 在页面使用：
+#### 常规页面插入
+```
+    render() {
+        return (
+            <View style={{flex: 1}}>
+                {this._renderNav()}
+                ...
+            </View>
+        )
+    }
+
+    _renderNav() {
+        return (
+            <NavigationBar
+                    title={'Main'}
+                    //showLeft={false}
+                    onLeftClick={()=>{
+                                   alert('a')
+                               }}
+                    leftButton={()=><View><Text>自定义左侧按钮</Text></View>}
+                    statusBar={{
+                        barStyle: 'dark-content',
+                        backgroundColor: 'white',
+                        hidden: false,//true则隐藏
+                    }}
+                   
+                />
+        )
+    }
+```
+#### 配合ReactNavigation使用
+```
+const RootStack = createStackNavigator({
+    TaskList: {screen: TaskListPage},
+    TaskDetails: {screen: TaskDetailsPage}
+}, {
+    navigationOptions: ({navigation}) => ({
+        header: <NavigationBar title={navigation.state.routeName}
+                               showLeft={navigation.state.routeName !== 'TaskList'}
+                               navigation={navigation}
+        />
+    })
+});
+```
