@@ -15,7 +15,7 @@
 | leftTextStyle  | ViewPropTypes.style   | -               |替换标题文字的组件
 | showleftImg  | bool   | true             |是否显示标题的后退按钮，本组件使用的是react-native-vector-icons中的图标，可自行替换成其他Image
 | showLeft  | bool   | true             | 是否显示返回按钮
-| showRight  | bool   | true             | 是否显示右侧按钮
+| showRight  | bool   | false             | 是否显示右侧按钮
 | rightText  | string   |    更多           | 右侧按钮的文字
 | rightTextStyle  | ViewPropTypes.style    | -             | 是否显示返回按钮
 | rightButton  | PropTypes.element   | -             | 自定义右侧按钮
