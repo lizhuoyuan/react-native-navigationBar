@@ -19,3 +19,4 @@
 | rightText  | string   |    更多           | 右侧按钮的文字
 | rightTextStyle  | ViewPropTypes.style    | -             | 是否显示返回按钮
 | rightButton  | PropTypes.element   | -             | 自定义右侧按钮
+| statusBar  | {  barStyle: PropTypes.oneOf(['light-content', 'default', 'dark-content']),  hidden: PropTypes.bool,  backgroundColor: PropTypes.string,}   | { barStyle: 'default', hidden: false,}             | 自定义状态栏
