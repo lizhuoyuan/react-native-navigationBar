@@ -9,6 +9,8 @@ import {
     Text,
     StyleSheet,
     View,
+    Image,
+    ImageBackground,
     TouchableOpacity,
     Platform,
     StatusBar,
@@ -18,7 +20,7 @@ import {
 //ScreenUtil 为屏幕尺寸适配的工具类
 import * as ScreenUtil from "../utils/ScreenUtil";
 import PropTypes from 'prop-types';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+
 
 const NAV_BAR_HEIGHT_ANDROID = 50;
 const NAV_BAR_HEIGHT_IOS = 44;
@@ -33,6 +35,7 @@ class NavigationBar extends React.Component {
 
     static propTypes = {
         statusBar: PropTypes.shape(StatusBarShape),
+        backgroundImgStyle: ViewPropTypes.style,
         style: ViewPropTypes.style,
         title: PropTypes.string,
         titleView: PropTypes.element,
@@ -57,7 +60,7 @@ class NavigationBar extends React.Component {
         },
         showLeft: true,
         showleftImg: true,  //是否显示返回箭头
-        leftText: 'Back',   //返回键位置的文字
+        leftText: '',   //返回键位置的文字
         showRight: false,
         rightText: '更多',
 
@@ -81,13 +84,13 @@ class NavigationBar extends React.Component {
             {rightButton}
         </View>;
         return (
-            //这里有一个{backgroundColor: color} 这个背景色可以写在styles.container样式中，颜色自己定义
-            <View style={[styles.container,
-                //{backgroundColor: color},
-                this.props.style]}>
-                {statusBar}
-                {content}
-            </View>
+            <ImageBackground source={require('IMG/app_bar.png')}
+                             style={[styles.imgBackground, this.props.backgroundImgStyle]}>
+                <View style={[styles.container, this.props.style]}>
+                    {statusBar}
+                    {content}
+                </View>
+            </ImageBackground>
         )
     }
 
@@ -108,8 +111,11 @@ class NavigationBar extends React.Component {
                     <View style={styles.leftContainer}>
                         {
                             showleftImg ?
-                                <Ionicons name={'ios-arrow-back'} size={30} color={'#fff'}
-                                          style={{marginRight: ScreenUtil.scaleSize(8)}}/>
+                                <Image source={require('IMG/back.png')}
+                                       style={{
+                                           width: ScreenUtil.scaleSize(25),
+                                           height: ScreenUtil.scaleSize(25)
+                                       }}/>
                                 : null
                         }
                         <Text style={[styles.leftRightStyle, leftTextStyle]}>{leftText}</Text>
@@ -154,8 +160,13 @@ function changeColor(store) {
 
 
 const styles = StyleSheet.create({
+    imgBackground: {
+        width: ScreenUtil.screenW,
+        height: ScreenUtil.scaleSize(58)
+    },
     container: {
-        backgroundColor: 'green'
+        justifyContent: 'center',
+        flex: 1
     },
     content: {
         justifyContent: 'space-between',
@@ -183,7 +194,7 @@ const styles = StyleSheet.create({
     },
 
     leftContainer: {
-        marginLeft: ScreenUtil.scaleSize(15),
+        marginLeft: ScreenUtil.scaleSize(17),
         flexDirection: 'row',
         alignItems: 'center'
     }
