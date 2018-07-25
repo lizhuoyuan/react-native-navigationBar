@@ -16,7 +16,7 @@
 | titleLayoutStyle  | ViewPropTypes.style   | -               |标题文字的样式
 | titleView  | PropTypes.element   | -               |替换标题文字的组件
 | leftButton  | PropTypes.element   | -              |自定义左侧按钮
-| leftText  | string   | Back               |左侧返回按钮的文字
+| leftText  | string   | ''               |左侧返回按钮的文字
 | leftTextStyle  | ViewPropTypes.style   | -               |替换标题文字的组件
 | showleftImg  | bool   | true             |是否显示标题的后退按钮，本组件使用的是react-native-vector-icons中的图标，可自行替换成其他Image
 | showLeft  | bool   | true             | 是否显示返回按钮
