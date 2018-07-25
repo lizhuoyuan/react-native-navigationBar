@@ -35,7 +35,9 @@ class NavigationBar extends React.Component {
 
     static propTypes = {
         statusBar: PropTypes.shape(StatusBarShape),
-        backgroundImgStyle: ViewPropTypes.style,
+
+        showBackgroundIMG: PropTypes.bool,
+
         style: ViewPropTypes.style,
         title: PropTypes.string,
         titleView: PropTypes.element,
@@ -63,7 +65,7 @@ class NavigationBar extends React.Component {
         leftText: '',   //返回键位置的文字
         showRight: false,
         rightText: '更多',
-
+        showBackgroundIMG: true  //是否有背景图片
     };
 
     constructor(props) {
@@ -71,7 +73,6 @@ class NavigationBar extends React.Component {
     }
 
     render() {
-        // let {color} = this.props;
         let leftButton = this._renderLeft();
         let rightButton = this._renderRight();
         let statusBar = <View>
@@ -84,12 +85,10 @@ class NavigationBar extends React.Component {
             {rightButton}
         </View>;
         return (
-            <ImageBackground source={require('IMG/app_bar.png')}
-                             style={[styles.imgBackground, this.props.backgroundImgStyle]}>
-                <View style={[styles.container, this.props.style]}>
-                    {statusBar}
-                    {content}
-                </View>
+            <ImageBackground source={this.props.showBackgroundIMG ? require('IMG/app_bar.png') : null}
+                             style={[styles.container, this.props.style]}>
+                {statusBar}
+                {content}
             </ImageBackground>
         )
     }
@@ -160,13 +159,11 @@ function changeColor(store) {
 
 
 const styles = StyleSheet.create({
-    imgBackground: {
-        width: ScreenUtil.screenW,
-        height: ScreenUtil.scaleSize(58)
-    },
     container: {
+        //backgroundColor:'green',
+        width: ScreenUtil.screenW,
+        height: ScreenUtil.scaleSize(58),
         justifyContent: 'center',
-        flex: 1
     },
     content: {
         justifyContent: 'space-between',
