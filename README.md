@@ -3,12 +3,15 @@
 
 博客地址：https://blog.csdn.net/u011272795/article/details/80722036
 
+![](1.png)
+
 用到一个屏幕适配工具类，使用方法和代码 [请点这里](https://blog.csdn.net/u011272795/article/details/73824558)
 
 #### 属性：
 | Prop | Type | Default | Description
 | ---------- | :-----------:         |:---------------:| -----------|
 | style      | ViewPropTypes.style | -               |标题栏的样式 |
+| showBackgroundIMG      | bool | true               |背景为一个图片 |
 | title      | string              | -               |标题使用的字符串 |
 | titleLayoutStyle  | ViewPropTypes.style   | -               |标题文字的样式
 | titleView  | PropTypes.element   | -               |替换标题文字的组件
@@ -71,3 +74,5 @@ const RootStack = createStackNavigator({
     })
 });
 ```
+
+
