@@ -70,7 +70,7 @@ class NavigationBar extends React.Component {
         showRight: false,
         rightText: '更多',
         showBackgroundIMG: true,  //是否有背景图片
-        leftImg: require('IMG/back.png'),  //默认的返回键对应的图片
+        leftImg: require('./image/back.png'),  //默认的返回键对应的图片
     };
 
     constructor(props) {
