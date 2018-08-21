@@ -18,11 +18,13 @@
 | leftButton  | PropTypes.element   | -              |自定义左侧按钮
 | leftText  | string   | ''               |左侧返回按钮的文字
 | leftTextStyle  | ViewPropTypes.style   | -               |替换标题文字的组件
+| leftImg  |  source的参数  | ImageSourcePropType             | 左侧图片的地址
 | showleftImg  | bool   | true             |是否显示标题的后退按钮，本组件使用的是react-native-vector-icons中的图标，可自行替换成其他Image
 | showLeft  | bool   | true             | 是否显示返回按钮
 | onLeftClick  | func   | this.props.navigation.goBack()            | 左侧按钮的点击事件(默认为ReactNavigation的goback)
 | showRight  | bool   | false             | 是否显示右侧按钮
 | rightText  | string   |    更多           | 右侧按钮的文字
+| rightImg  |  source的参数  | ImageSourcePropType             | 右侧图片的地址，默认不传则不显示
 | rightTextStyle  | ViewPropTypes.style    | -             | 是否显示返回按钮
 | rightButton  | PropTypes.element   | -             | 自定义右侧按钮
 | onRightClick  | PropTypes.func   | -             | 右侧按钮的点击事件
