@@ -48,11 +48,15 @@ class NavigationBar extends React.Component {
         leftTextStyle: ViewPropTypes.style,
         showleftImg: PropTypes.bool,
         leftButton: PropTypes.element,
-
+        onLeftClick: PropTypes.func,
+        
         showRight: PropTypes.bool,
         rightText: PropTypes.string,
         rightTextStyle: ViewPropTypes.style,
         rightButton: PropTypes.element,
+        onRightClick: PropTypes.func,
+        leftImg: PropTypes.element,
+        rightImg: PropTypes.element
     };
 
     static defaultProps = {
@@ -65,7 +69,8 @@ class NavigationBar extends React.Component {
         leftText: '',   //返回键位置的文字
         showRight: false,
         rightText: '更多',
-        showBackgroundIMG: true  //是否有背景图片
+        showBackgroundIMG: true,  //是否有背景图片
+        leftImg: require('IMG/back.png'),  //默认的返回键对应的图片
     };
 
     constructor(props) {
@@ -94,7 +99,7 @@ class NavigationBar extends React.Component {
     }
 
     _renderLeft() {
-        let {leftButton, leftTextStyle, showLeft, navigation, onLeftClick, leftText, showleftImg} = this.props;
+        let {leftButton, leftTextStyle, showLeft, navigation, onLeftClick, leftText, showleftImg, leftImg} = this.props;
         if (!showLeft) {
             return null;
         }
@@ -110,7 +115,7 @@ class NavigationBar extends React.Component {
                     <View style={styles.leftContainer}>
                         {
                             showleftImg ?
-                                <Image source={require('IMG/back.png')}
+                                <Image source={leftImg}
                                        style={{
                                            width: ScreenUtil.scaleSize(25),
                                            height: ScreenUtil.scaleSize(25)
@@ -125,7 +130,7 @@ class NavigationBar extends React.Component {
     }
 
     _renderRight() {
-        let {rightButton, rightTextStyle, showRight, onRightClick, rightText} = this.props;
+        let {rightButton, rightTextStyle, showRight, onRightClick, rightText, rightImg} = this.props;
         if (!showRight) {
             return null;
         }
@@ -136,7 +141,16 @@ class NavigationBar extends React.Component {
                         onRightClick()
                     }
                 }}>
-                    <View>
+                    <View style={styles.rightContainer}>
+                        {
+                            rightImg ?
+                                <Image source={rightImg}
+                                       style={{
+                                           width: ScreenUtil.scaleSize(25),
+                                           height: ScreenUtil.scaleSize(25)
+                                       }}/>
+                                : null
+                        }
                         <Text style={[styles.leftRightStyle, rightTextStyle]}>{rightText}</Text>
                     </View>
                 </TouchableOpacity>)
@@ -194,7 +208,12 @@ const styles = StyleSheet.create({
         marginLeft: ScreenUtil.scaleSize(17),
         flexDirection: 'row',
         alignItems: 'center'
-    }
+    },
+    rightContainer: {
+        marginRight: ScreenUtil.scaleSize(17),
+        flexDirection: 'row',
+        alignItems: 'center'
+    },
 });
 
 // 包装 component ，注入 dispatch 和 state 到其默认的 connect(selector)(App) 中；
